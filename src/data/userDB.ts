@@ -4,15 +4,16 @@ export class UserDB {
     private connection = knex({
       client: "mysql",
       connection: {
-        host: "<HOST>",
-        port: 0,
-        user: "<USER>",
-        password: "<PASSWORD>",
-        database: "<TABLE>"
+        host: "ec2-18-229-236-15.sa-east-1.compute.amazonaws.com",
+        port: 3306,
+        user: "eduardo",
+        password: "v$vdxCYsib9BsCY38k0k",
+        database: "bouman-eduardo"
       }
     });
   
-    private userTableName = "<TABELA>";
+    private userTableName = "people";
+
 
     public async createUser(user: any): Promise<void> {
         await this.connection.raw(`
