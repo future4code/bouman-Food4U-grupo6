@@ -14,6 +14,7 @@ export class UserDB {
   
     private userTableName = "people";
 
+
     public async createUser(user: any): Promise<void> {
         await this.connection.raw(`
             INSERT INTO ${this.userTableName} (id, email, password)
