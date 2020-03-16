@@ -1,4 +1,5 @@
 import knex from "knex";
+import { User } from "../business/entities/user";
 
 export class UserDB {
     private connection = knex({
@@ -15,7 +16,7 @@ export class UserDB {
     private userTableName = "people";
 
 
-    public async createUser(user: any): Promise<void> {
+    public async createUser(user: User): Promise<void> {
         await this.connection.raw(`
             INSERT INTO ${this.userTableName} (id, email, password)
             VALUES(
@@ -26,11 +27,9 @@ export class UserDB {
         `);
     }
 
-    public async getUserByEmail(user: any) Promise<any>{
-        await this.connection.raw(`
-            SELECT * FROM ${this.userTableName}
-            WHERE email
-        `);
+    public async getUserByEmail(email: string): Promise<User | undefined>{
+        const user = await this.connection.select('*').from('people')
+        .where({email});
 
         if (!user[0]){
             return undefined
