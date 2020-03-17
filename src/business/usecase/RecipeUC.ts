@@ -1,6 +1,6 @@
 import { v4 } from 'uuid'
-import { Recipe } from './entities/recipe'
-import { RecipeGateway } from "../business/gateways/RecipeGateway"
+import { Recipe } from '../entities/recipe'
+import { RecipeGateway } from "../gateways/RecipeGateway"
 
 interface CreateRecipeInput {
     title: string,
