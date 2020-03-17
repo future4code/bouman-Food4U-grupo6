@@ -13,7 +13,7 @@ export class SignupUC {
         try {
             const userId = v4()
 
-        const hashPassword = await bcrypt.hash(input.password, saltOrRounds: 10)
+        const hashPassword = await bcrypt.hash(input.password, 10)
 
         const newUser = new User(userId, input.email, hashPassword)
 
