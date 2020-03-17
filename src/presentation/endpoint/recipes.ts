@@ -1,14 +1,10 @@
 import { Request, Response, response } from "express";
 import { RecipeDB } from "../../data/recipeDB";
-import { RecipeUC } from "../../business/RecipeUC";
+import { RecipeUC } from "../../business/usecase/RecipeUC";
 
 export const getRecipesEndPoint = async (req: Request, res: Response) => {
     try{
-        const jwtAuth = new JWTAtuthentication()
-        const userId = jwtAuth.verifyToken(req.headers.auth as string)
-
-        const recipeDatabase = new RecipeDB()
-        const useCase = new RecipeUC(recipeDatabase)
+        const useCase = new RecipeUC(new RecipeDB())
 
         const input = {
             userId,
@@ -18,7 +14,7 @@ export const getRecipesEndPoint = async (req: Request, res: Response) => {
 
         const userInfo = await useCase.execute(input)
 
-        response.send({user: userInfo})
+        res.send({user: userInfo})
 
     } catch(err){
         res.status(500).send({message: err.message})
