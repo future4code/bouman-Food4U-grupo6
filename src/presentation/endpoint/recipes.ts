@@ -1,6 +1,6 @@
 import { Request, Response, response } from "express";
 import { RecipeDB } from "../../data/recipeDB";
-import { RecipeUC } from "../../business/RecipeUC";
+import { RecipeUC } from "../../business/usecase/RecipeUC";
 
 export const getRecipesEndPoint = async (req: Request, res: Response) => {
     try{
