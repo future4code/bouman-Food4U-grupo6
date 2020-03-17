@@ -27,4 +27,14 @@ export class UserDB extends BaseDB{
         }
         return new User(user[0].id, user[0].email, user[0].password)
     }
+
+    public async getUserById(id: string): Promise<User | undefined>{
+        const user = await this.connection.select('*').from('people')
+        .where({id});
+
+        if (!user[0]){
+            return undefined
+        }
+        return new User(user[0].id, user[0].email, user[0].password)
+    }
 }
