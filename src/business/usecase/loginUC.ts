@@ -2,6 +2,7 @@ import {User} from "../entities/user";
 import { UserDB } from "../../data/userDB";
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
+import { JWTAuthentication } from "../../utils/JWTAuthentication";
 
 interface LoginInput {
     email: string
@@ -25,7 +26,10 @@ export class LoginUC {
             throw new Error("Senha incorreta")
         }
 
-        const token = jwt.sign({userId: user.getId()}, "chaveAqui", {expiresIn: "1h"})
+        const jwtAuth = new JWTAuthentication()
+        const userId = jwtAuth.verifyToken(request.headers.auth as string)
+
+        const token = jwtAuth.generateToken(user.getId())
 
         return token
 

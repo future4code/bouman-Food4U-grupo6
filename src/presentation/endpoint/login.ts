@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { UserDB } from "../../data/userDB";
-import LoginUC from "../../business/usecase/loginUC";
+import { LoginUC } from "../../business/usecase/loginUC";
 
 export const loginEndpoint = async (req: Request, res: Response) => {
     try {
-        const loginUC = new LoginUC(new UserDB());
+        const loginUC = new LoginUC();
         const result = await loginUC.execute({
             email: req.body.email,
             password: req.body.password
@@ -13,7 +12,7 @@ export const loginEndpoint = async (req: Request, res: Response) => {
         res.status(200).send(result);
     } catch (err) {
         console.log(err);
-        res.status(400).send({
+        res.status(500).send({
             message: err.message,
             ...err
         });
