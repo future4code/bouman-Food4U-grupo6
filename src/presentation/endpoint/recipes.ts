@@ -1,13 +1,13 @@
-import { Request, Response, response } from "express";
+import { Request, Response } from "express";
 import { RecipeDB } from "../../data/recipeDB";
 import { RecipeUC } from "../../business/usecase/RecipeUC";
-import { JWTAuthentication } from ""
+import { JWTAuthentication } from "../../utils/JWTAuthentication"
 
 export const getRecipesEndPoint = async (req: Request, res: Response) => {
     try{
         const jwtAuth = new JWTAuthentication()
 
-        const userId = jwtAuth.verifyToken(request.headers.auth as string)
+        const userId = jwtAuth.verifyToken(req.headers.auth as string)
 
         const recipeDB = new RecipeDB()
 
