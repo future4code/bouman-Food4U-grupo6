@@ -1,5 +1,7 @@
 import { GetUserInfoUC } from "../../business/usecase/getUserInfo";
 import { JWTAuthentication } from "../../utils/JWTAuthentication";
+import { Request, Response } from "express";
+
 
 export const getUserInfoEndpoint = async (request: Request, response: Response) => {
     try {
