@@ -1,5 +1,3 @@
-import knex from "knex";
-import { User } from "../business/entities/user";
 import { RecipeGateway } from "../business/gateways/RecipeGateway";
 import { Recipe } from "../business/entities/recipe";
 import { BaseDB } from "./baseDB";

@@ -3,7 +3,7 @@ import * as jwt from "jsonwebtoken";
 export class JWTAuthentication {
     private SECRET: string
     constructor() {
-        const secret = "process.env.JWT_SECRET"
+        const secret = process.env.JWT_SECRET
         if(!secret){
             throw new Error("Lembre-se de definir a variável de ambiente")
         }
