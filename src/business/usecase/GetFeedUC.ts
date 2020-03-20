@@ -8,7 +8,8 @@ interface GetFeedOutput {
     recipeId: string
     title: string
     description: string
-    creationDate: Date
+    creationDate: number
+    userRmail: string
 }
 
 export class GetFeedUC {
@@ -22,7 +23,8 @@ export class GetFeedUC {
                 recipeId: recipe.getId(),
                 title: recipe.getTitle(),
                 description: recipe.getDescription(),
-                creationDate: recipe.getCreationDate()
+                creationDate: recipe.getCreationDate().getTime(),
+                userRmail: recipe.getEmail()
             }
         })
     }
