@@ -1,4 +1,7 @@
 export class Recipe {
+
+    private userEmail?: string
+
     constructor(
         private id: string,
         private title: string, 
@@ -25,5 +28,16 @@ export class Recipe {
 
         getUserId() {
             return this.userId
+        }
+
+        setEmail(email: string){
+            this.userEmail = email
+        }
+
+        getEmail(){
+            if (!this.userEmail){
+                throw new Error('Email não foi preenchido')
+            }
+            return this.userEmail
         }
 }

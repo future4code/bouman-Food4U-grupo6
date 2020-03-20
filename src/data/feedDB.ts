@@ -19,7 +19,9 @@ export class FeedDB extends BaseDB implements FeedGateway {
                         ORDER BY recipes.creationDate DESC;`)
 
         return response[0].map((recipe: any) =>{
-            return new Recipe(recipe.id, recipe.title, recipe.description, recipe.creationDate, recipe.userId)
+            const newRecipe =  new Recipe(recipe.id, recipe.title, recipe.description, recipe.creationDate, recipe.userId)
+            newRecipe.setEmail(recipe.email)
+            return newRecipe
         });
         
     }
