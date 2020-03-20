@@ -6,7 +6,9 @@ export const signupEndpoint = async (req: Request, res: Response) => {
 
     const input = {
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        name: req.body.name,
+        dateOfBirth: req.body.dateOfBirth
     }
     
     try {
