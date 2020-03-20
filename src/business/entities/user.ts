@@ -1,5 +1,5 @@
 export class User {
-    constructor (private id: string, private email: string, private password: string) {}
+    constructor (private id: string, private email: string, private password: string, private name: string, private dateOfBirth: Date) {}
 
     getId() {
         return this.id
@@ -11,5 +11,11 @@ export class User {
 
     getPassword() {
         return this.password
+    }
+    getName() {
+        return this.name
+    }
+    getDateOfBirth() {
+        return this.dateOfBirth
     }
 }

@@ -6,6 +6,8 @@ import * as bcrypt from "bcrypt";
 interface SignupInput {
     email: string
     password: string
+    name: string
+    dateOfBirth: Date
 }
 
 export class SignupUC {
@@ -16,7 +18,7 @@ export class SignupUC {
 
             const hashPassword = await bcrypt.hash(input.password, 10)
 
-            const newUser = new User(userId, input.email, hashPassword)
+            const newUser = new User(userId, input.email, hashPassword, input.name, input.dateOfBirth)
 
             const userDB = new UserDB()
 

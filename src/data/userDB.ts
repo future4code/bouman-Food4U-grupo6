@@ -14,7 +14,9 @@ export class UserDB extends BaseDB implements UserGateway {
             VALUES(
                 '${user.getId()}',
                 '${user.getEmail()}',
-                '${user.getPassword()}'
+                '${user.getPassword()}',
+                '${user.getName()}',
+                '${user.getDateOfBirth()}'
             );
         `);
     }
@@ -26,7 +28,7 @@ export class UserDB extends BaseDB implements UserGateway {
         if (!user[0]){
             return undefined
         }
-        return new User(user[0].id, user[0].email, user[0].password)
+        return new User(user[0].id, user[0].email, user[0].password, user[0].name, user[0].dateOfBirth)
     }
 
     public async getUserById(id: string): Promise<User | undefined>{
@@ -36,7 +38,7 @@ export class UserDB extends BaseDB implements UserGateway {
         if (!user[0]){
             return undefined
         }
-        return new User(user[0].id, user[0].email, user[0].password)
+        return new User(user[0].id, user[0].email, user[0].password, user[0].name, user[0].dateOfBirth)
     }
 
     async createUserFollowRelation(followerId: string, followedId: string): Promise<void>{
