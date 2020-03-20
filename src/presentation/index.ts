@@ -2,6 +2,9 @@ import express, { Request, Response } from "express";
 import { signupEndpoint } from "./endpoint/signup";
 import { loginEndpoint } from "./endpoint/login";
 import { SignupUC } from "../business/usecase/signupUC";
+import { getRecipesEndPoint } from "./endpoint/recipes";
+import { followUserEndpoint } from "./endpoint/followUser";
+import { getFeedEndPoint } from "./endpoint/feed";
 
 const app = express();
 app.use(express.json());
@@ -25,5 +28,8 @@ app.post('/signup', signupEndpoint, async (request: Request, response: Response)
 })
 
 app.post('/login', loginEndpoint);
+app.post('/create/recipe', getRecipesEndPoint)
+app.post('/user/follow', followUserEndpoint)
+app.get('/feed', getFeedEndPoint)
 
 export default app;
